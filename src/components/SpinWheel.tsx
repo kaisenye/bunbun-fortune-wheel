@@ -42,15 +42,26 @@ export const SpinWheel = () => {
 
     const prizeIndex = PRIZES.findIndex(p => p.id === prize.id);
     const segmentAngle = 360 / PRIZES.length;
-    
-    // Calculate target rotation to align prize with top pointer
+
+    // Calculate target rotation to align prize CENTER with top pointer
+    // Add 0.5 to prizeIndex to point at middle of segment (where emoji is)
     // Add random offset within the segment for natural feel
     const randomOffset = (Math.random() - 0.5) * segmentAngle * 0.5;
-    const targetAngle = -prizeIndex * segmentAngle + randomOffset;
-    
+    const targetAngle = -(prizeIndex + 0.5) * segmentAngle + randomOffset;
+
+    // Calculate rotation needed from current position
+    const currentPosition = rotation % 360;
+    let rotationNeeded = targetAngle - currentPosition;
+
+    // Ensure we always rotate forward (clockwise, negative direction)
+    // by going the "long way" if the short way would be counter-clockwise
+    while (rotationNeeded > 0) {
+      rotationNeeded -= 360;
+    }
+
     // Add multiple full rotations for visual effect
     const spins = 5;
-    const finalRotation = rotation + spins * 360 + targetAngle;
+    const finalRotation = rotation + spins * 360 + rotationNeeded;
 
     setRotation(finalRotation);
 
