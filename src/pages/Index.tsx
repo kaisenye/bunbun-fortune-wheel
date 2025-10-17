@@ -4,6 +4,12 @@ import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const handleReset = () => {
+    const password = prompt("Enter admin password to reset stock:");
+    if (password !== "4337") {
+      alert("Incorrect password!");
+      return;
+    }
+    
     if (confirm("Reset all prize quantities? This will restore all prizes to their initial stock.")) {
       resetPrizeQuantities();
       window.location.reload();

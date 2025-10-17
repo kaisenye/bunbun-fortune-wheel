@@ -42,7 +42,13 @@ export const SpinWheel = () => {
 
     const prizeIndex = PRIZES.findIndex(p => p.id === prize.id);
     const segmentAngle = 360 / PRIZES.length;
-    const targetAngle = 360 - (prizeIndex * segmentAngle + segmentAngle / 2);
+    
+    // Calculate target rotation to align prize with top pointer
+    // Add random offset within the segment for natural feel
+    const randomOffset = (Math.random() - 0.5) * segmentAngle * 0.5;
+    const targetAngle = -prizeIndex * segmentAngle + randomOffset;
+    
+    // Add multiple full rotations for visual effect
     const spins = 5;
     const finalRotation = rotation + spins * 360 + targetAngle;
 

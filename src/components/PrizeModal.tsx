@@ -25,7 +25,7 @@ export const PrizeModal = ({ prize, open, onClose }: PrizeModalProps) => {
         <div className="flex flex-col items-center gap-4 py-6">
           <div className="text-8xl animate-bounce">{prize.emoji}</div>
           <h3 className="text-2xl font-bold text-primary">{prize.name}</h3>
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="text-sm text-muted-foreground mt-2" aria-describedby="prize-description">
             Show this screen to claim your prize!
           </p>
         </div>
