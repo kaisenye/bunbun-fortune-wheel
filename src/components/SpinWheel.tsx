@@ -102,24 +102,15 @@ export const SpinWheel = () => {
                   />
                   <text
                     x={textX}
-                    y={textY - 15}
+                    y={textY}
                     textAnchor="middle"
+                    dominantBaseline="middle"
                     fontSize="48"
                     fill="white"
                     style={{ filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.5))" }}
+                    transform={`rotate(${(middleAngle * 180) / Math.PI + 90}, ${textX}, ${textY})`}
                   >
                     {prize.emoji}
-                  </text>
-                  <text
-                    x={textX}
-                    y={textY + 20}
-                    textAnchor="middle"
-                    fontSize="16"
-                    fontWeight="bold"
-                    fill="white"
-                    style={{ filter: "drop-shadow(1px 1px 2px rgba(0,0,0,0.7))" }}
-                  >
-                    {quantities[prize.id] || 0}
                   </text>
                 </g>
               );
