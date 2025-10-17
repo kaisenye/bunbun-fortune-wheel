@@ -34,7 +34,7 @@ export const SpinWheel = () => {
 
     const prize = selectPrize();
     if (!prize) {
-      alert("All prizes have been claimed! 所有奖品已被领取！");
+      alert("All prizes have been claimed!");
       return;
     }
 
@@ -103,8 +103,8 @@ export const SpinWheel = () => {
                       transform: `rotate(${segmentAngle / 2 - 90}deg)`,
                     }}
                   >
-                    <div className="text-3xl mb-1">{prize.emoji}</div>
-                    <div className="text-xs font-bold text-white drop-shadow-md whitespace-nowrap">
+                    <div className="text-5xl mb-2">{prize.emoji}</div>
+                    <div className="text-sm font-bold text-white drop-shadow-md whitespace-nowrap">
                       {quantities[prize.id] || 0}
                     </div>
                   </div>
@@ -125,7 +125,7 @@ export const SpinWheel = () => {
         size="lg"
         className="text-xl px-12 py-6 h-auto font-bold shadow-lg hover:scale-105 transition-transform disabled:scale-100"
       >
-        {spinning ? "Spinning... 转转转..." : "SPIN! 转一转！"}
+        {spinning ? "Spinning..." : "SPIN THE WHEEL!"}
       </Button>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 w-full text-center text-sm">
@@ -139,7 +139,7 @@ export const SpinWheel = () => {
             }`}
           >
             <div className="text-2xl mb-1">{prize.emoji}</div>
-            <div className="font-semibold text-xs text-foreground">{prize.nameCN}</div>
+            <div className="font-semibold text-xs text-foreground">{prize.name}</div>
             <div className="text-xs text-muted-foreground mt-1">
               {quantities[prize.id]} left
             </div>
